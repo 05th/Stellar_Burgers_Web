@@ -1,36 +1,27 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.Before;
-import pom.HomePage;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
+import pom.HomePage;
 
 public class ConstructorSectionTest {
-    HomePage mainPage = Selenide.page(HomePage.class);
-
-    @Before
-    public void setUp(){
-        Configuration.browser = "firefox";
-        //Configuration.browser = "yandex";
-    }
-
+    HomePage homePage = Selenide.page(HomePage.class);
     @Test
-    @DisplayName("Check sections selected")
+    @DisplayName("Check try Section select")
     public void goToSectionsTest() throws InterruptedException {
-        mainPage
+        homePage
                 .openPage()
                 .clickFillings();
-        Assert.assertEquals("Начинки", mainPage.getTextActionButton());
+        Assert.assertEquals("Начинки", homePage.getTextActionButton());
 
-        mainPage
+        homePage
                 .clickSauces();
-        Assert.assertEquals("Соусы", mainPage.getTextActionButton());
+        Assert.assertEquals("Соусы", homePage.getTextActionButton());
 
-        mainPage
+        homePage
                 .clickBuns();
-        Assert.assertEquals("Булки", mainPage.getTextActionButton());
+        Assert.assertEquals("Булки", homePage.getTextActionButton());
     }
 }

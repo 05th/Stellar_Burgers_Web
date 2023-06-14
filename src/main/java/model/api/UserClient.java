@@ -1,12 +1,7 @@
 package model.api;
 
-import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import org.apache.commons.lang3.RandomStringUtils;
-
-import java.util.HashMap;
 import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 
 public class UserClient {
@@ -23,11 +18,9 @@ public class UserClient {
                 .when()
                 .post(URL + REGISTER);
     }
-
     public Response deleteUser(String accessToken){
         return given().log().all()
                 .header("Authorization", accessToken)
                 .delete(URL + USER);
     }
-
 }

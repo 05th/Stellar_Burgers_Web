@@ -1,7 +1,6 @@
 package pom;
 
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -36,17 +35,14 @@ public class SignUpPage {
         open(URL);
         return page(SignUpPage.class);
     }
-
     public SignUpPage setName(String name) {
         nameField.setValue(name);
         return page(SignUpPage.class);
     }
-
     public SignUpPage setEmail(String email) {
         emailField.setValue(email);
         return page(SignUpPage.class);
     }
-
     public SignUpPage setPassword(String password) {
         passwordField.setValue(password);
         return page(SignUpPage.class);
@@ -55,12 +51,10 @@ public class SignUpPage {
         registrationButton.click();
         return page(LoginPage.class);
     }
-
     public LoginPage clickLoginButton() {
         loginButton.click();
         return page(LoginPage.class);
     }
-
     public LoginPage registrationUser(String name, String email, String password) {
         setName(name).
                 setEmail(email).
@@ -68,13 +62,11 @@ public class SignUpPage {
                 clickRegistrationButton();
         return page(LoginPage.class);
     }
-
     public SignUpPage errorUserIsAlreadyRegisteredIsDisplayed() {
         boolean isDisplayed = errorUserIsAlreadyRegistered.shouldBe(visible, Duration.ofSeconds(5)).isDisplayed();
         Assert.assertTrue("Ошибка 'Пользователь уже существует' не отображается", isDisplayed);
         return page(SignUpPage.class);
     }
-
     public SignUpPage errorPasswordIsDisplayed() {
         boolean isDisplayed = errorPassword.shouldBe(visible, Duration.ofSeconds(5)).isDisplayed();
         Assert.assertTrue("Ошибка 'Не корректный пароль' не отображается", isDisplayed);

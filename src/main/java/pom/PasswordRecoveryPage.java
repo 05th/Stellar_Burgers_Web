@@ -1,7 +1,6 @@
 package pom;
 
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -28,13 +27,9 @@ public class PasswordRecoveryPage {
         open(URL);
         return page(PasswordRecoveryPage.class);
     }
-
-
     public void setEmail(String email) {
         emailField.setValue(email);
     }
-
-
     public LoginPage clickLoginButton() {
         loginButton.click();
         return page(LoginPage.class);

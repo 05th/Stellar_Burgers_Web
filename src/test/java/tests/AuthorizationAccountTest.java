@@ -1,17 +1,16 @@
 package tests;
 
-import model.api.UserClient;
-import com.codeborne.selenide.Configuration;
-import model.api.UserRandomDataGenerator;
-import pom.HomePage;
-import pom.PersonalAccountPage;
-import pom.PasswordRecoveryPage;
-import pom.SignUpPage;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
+import model.api.UserClient;
+import model.api.UserRandomDataGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import pom.HomePage;
+import pom.PasswordRecoveryPage;
+import pom.PersonalAccountPage;
+import pom.SignUpPage;
 
 import java.util.Map;
 
@@ -30,7 +29,6 @@ public class AuthorizationAccountTest {
 
     @Before
     public void setUp() {
-        Configuration.browser = "firefox";
         //Configuration.browser = "yandex";
         Map<String, String> generatedDataUser = userRandomDataGenerator.getMapGeneratedDataUser();
         email = generatedDataUser.get("email");
@@ -38,7 +36,6 @@ public class AuthorizationAccountTest {
         password = generatedDataUser.get("password");
         accessToken = userClient.createUser(generatedDataUser).then().extract().body().path("accessToken");
     }
-
     @Test
     @DisplayName("SignIn from Home page")
     public void authorizationLoginFromHomePage() {
@@ -48,7 +45,6 @@ public class AuthorizationAccountTest {
                 .loginUser(email, password)
                 .orderButtonIsDisplayed();
     }
-
     @Test
     @DisplayName("SignIn from personal account»")
     public void authorizationPersonalAccountButtonOnHomePage() {
@@ -58,7 +54,6 @@ public class AuthorizationAccountTest {
                 .loginUser(email, password)
                 .orderButtonIsDisplayed();
     }
-
     @Test
     @DisplayName("SignIn from registration page")
     public void authorizationEntryButtonOnSingUpPage() {
@@ -68,7 +63,6 @@ public class AuthorizationAccountTest {
                 .loginUser(email, password)
                 .orderButtonIsDisplayed();
     }
-
     @Test
     @DisplayName("SignIn from recovery page")
     public void authorizationEntryButtonOnPasswordRecoveryPage() {
@@ -78,7 +72,6 @@ public class AuthorizationAccountTest {
                 .loginUser(email, password)
                 .orderButtonIsDisplayed();
     }
-
     @Test
     @DisplayName("LogIn to personal account")
     public void goToPersonalAccountTest() {
@@ -89,7 +82,6 @@ public class AuthorizationAccountTest {
                 .clickPersonalAccountButton();
         profilePage.visibleProfileButton();
     }
-
     @Test
     @DisplayName("LogOut from personal account")
     public void logoutAccount() {
@@ -102,7 +94,6 @@ public class AuthorizationAccountTest {
                 .logOutFromAccount()
                 .waitLoadPage();
     }
-
     @Test
     @DisplayName("Go to Home page by click header constructor")
     public void goToHomePageByHeaderConstructor() {
@@ -115,7 +106,6 @@ public class AuthorizationAccountTest {
                 .clickConstructorHeader()
                 .orderButtonIsDisplayed();
     }
-
     @Test
     @DisplayName("Go to Home page by click burger logo")
     public void goToHomePageByLogoBurger() {
@@ -128,7 +118,6 @@ public class AuthorizationAccountTest {
                 .clickOnBurgerLogo()
                 .orderButtonIsDisplayed();
     }
-
     @After
     public void tearDown() {
         if (accessToken != null) {

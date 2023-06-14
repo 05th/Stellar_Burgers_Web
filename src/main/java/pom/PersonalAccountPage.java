@@ -3,7 +3,6 @@ package pom;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -30,27 +29,19 @@ public class PersonalAccountPage {
         logOutButton.click();
         return page(LoginPage.class);
     }
-
-
     public PersonalAccountPage visibleProfileButton(){
         boolean isDisplayed = profileButton.shouldBe(visible, Duration.ofSeconds(5)).isDisplayed();
         Assert.assertTrue("Кнопка 'Профиль' не отображается", isDisplayed);
         return page(PersonalAccountPage.class);
     }
-
-
     public HomePage clickOnBurgerLogo() {
         burgerLogo.click();
         return Selenide.page(HomePage.class);
     }
-
-
     public HomePage clickConstructorHeader() {
         constructorHeader.click();
         return Selenide.page(HomePage.class);
     }
-
-
     public void waitLoadPage() {
         profileButton.shouldBe(Condition.visible);
     }
