@@ -1,4 +1,4 @@
-# Diplom_3
+# Stellar Burgers Web
 
 ## Task 3: Web application.
 
